@@ -1,0 +1,73 @@
+SQL Queries
+We'll now focus on SQL-based data analysis by running queries on the dataset using SQLite in Python.
+
+1: Load Data into SQL Database
+Before running queries, we need to store the dataset in an SQL database.
+
+import sqlite3
+
+# Create an SQLite database (stored in memory)
+conn = sqlite3.connect(":memory:")
+cursor = conn.cursor()
+
+# Load DataFrame into SQL
+df.to_sql("superstore", conn, index=False, if_exists="replace")
+
+print("Data successfully loaded into SQL database!")
+ 
+
+2: SQL Query - Total Sales by Category
+We will group data by Category to find the total sales for each.
+
+query = """
+SELECT Category, SUM(Sales) AS Total_Sales
+FROM superstore
+GROUP BY Category
+ORDER BY Total_Sales DESC;
+"""
+
+# Run the query
+category_sales = pd.read_sql(query, conn)
+
+# Display results
+print(category_sales)
+
+
+
+
+3: SQL Query - Top 5 Customers by Total Spending
+We will find the top 5 customers who spent the most.
+
+
+
+query = """
+SELECT [Customer Name], SUM(Sales) AS Total_Spending
+FROM superstore
+GROUP BY [Customer Name]
+ORDER BY Total_Spending DESC
+LIMIT 5;
+"""
+
+# Run the query
+top_customers = pd.read_sql(query, conn)
+
+# Display results
+print(top_customers)
+
+
+
+4: SQL Query - Monthly Sales Trend
+We will analyze monthly sales trends using SQL
+
+query = """
+SELECT strftime('%Y-%m', [Order Date]) AS Month, SUM(Sales) AS Total_Sales
+FROM superstore
+GROUP BY Month
+ORDER BY Month;
+"""
+
+# Run the query
+monthly_sales = pd.read_sql(query, conn)
+
+# Display results
+print(monthly_sales)
