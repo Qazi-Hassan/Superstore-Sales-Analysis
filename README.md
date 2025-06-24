@@ -23,21 +23,34 @@ The project covers:
   
 
 ## 📂 Project Structure
+
 Superstore-Sales-Analysis/
 │
+
 ├── Visuals/ # Visualizations (PNG)
+
 │
+
 ├── Sample - Superstore.csv # Original dataset
+
 ├── superstore_cleaned.csv # Cleaned dataset
+
 │
+
 ├── superstore_Analysis.ipynb # Jupyter Notebook analysis
+
 ├── app.py # Streamlit/Dashboard app (if applicable)
 │
+
 ├── requirements.txt # Required Python libraries
+
 ├── Superstore_Sales_Profitability_Report.pdf # Final report (PDF)
 │
+
 ├── superstore-sales-analysis.png # Banner image for README
+
 │
+
 └── README.md # Project documentation
 
 
